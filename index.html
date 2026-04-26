@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIV Awareness & Education</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0079a8;
+    --teal-dark: #005a7e;
+    --teal-light: #e8f4f9;
+    --accent: #e8424c;
+    --accent2: #f5a623;
+    --dark: #0f1f2d;
+    --mid: #3a5068;
+    --light: #f4f8fb;
+    --white: #ffffff;
+    --border: #d0e4ef;
+    --text: #1a3348;
+    --muted: #6b8fa8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 64px;
+    box-shadow: 0 2px 20px rgba(0,0,0,.28);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    text-decoration: none;
+  }
+
+  .nav-logo {
+    width: 36px; height: 36px;
+    background: var(--teal);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: .9rem;
+    color: white;
+    letter-spacing: -.5px;
+  }
+
+  .nav-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: white;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: .2rem;
+    list-style: none;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,.7);
+    font-size: .85rem;
+    font-weight: 500;
+    padding: .45rem .85rem;
+    border-radius: 6px;
+    transition: all .2s;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(255,255,255,.1);
+    color: white;
+  }
+
+  .nav-links a.active {
+    background: var(--teal);
+    color: white;
+  }
+
+  /* ─── PAGE SYSTEM ─── */
+  .page { display: none; animation: fadeIn .35s ease; }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── HERO WORD CLOUD ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #0a3a57 60%, var(--teal-dark) 100%);
+    position: relative;
+    overflow: hidden;
+    height: 420px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,121,168,.3) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: 20%; bottom: -80px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,121,168,.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #heroCloud {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-source {
+    position: absolute;
+    bottom: .9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .72rem;
+    color: rgba(255,255,255,.35);
+    letter-spacing: .03em;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  /* ─── KEY POINTS STRIP ─── */
+  .keypoints {
+    background: var(--teal);
+    padding: 2.2rem 2.5rem;
+  }
+
+  .keypoints-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .kp-label {
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+    margin-bottom: 1.1rem;
+  }
+
+  .kp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1rem;
+  }
+
+  .kp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .65rem;
+    color: white;
+  }
+
+  .kp-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.6);
+    flex-shrink: 0;
+    margin-top: .45rem;
+  }
+
+  .kp-item p { font-size: .9rem; line-height: 1.5; }
+
+  /* ─── MAIN CONTENT ─── */
+  .content-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem;
+  }
+
+  /* ─── SECTION CARDS ─── */
+  .section-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(15,31,45,.05);
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.65rem;
+    color: var(--teal);
+    margin-bottom: 1.1rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--teal-light);
+  }
+
+  .section-card p {
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: .9rem;
+    font-size: .97rem;
+  }
+
+  .section-card p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  /* ─── SYMPTOM CAROUSEL ─── */
+  .symptom-carousel-wrap {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 1.4rem 0 1rem;
+    height: 420px;
+    box-shadow: 0 8px 32px rgba(15,31,45,.18);
+  }
+
+  .carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform .55s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 6s ease;
+    transform: scale(1.04);
+  }
+
+  .carousel-slide.active .slide-bg {
+    transform: scale(1);
+  }
+
+  /* colour tint overlays — each symptom gets its own mood */
+  .slide-tint {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* bottom frosted foreground card */
+  .slide-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.6rem 2rem 1.8rem;
+    background: rgba(10, 26, 40, 0.62);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+
+  .slide-icon-label {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: .5rem;
+  }
+
+  .slide-emoji {
+    font-size: 2rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
+  }
+
+  .slide-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.55rem;
+    color: #ffffff;
+    letter-spacing: -.01em;
+    text-shadow: 0 2px 8px rgba(0,0,0,.3);
+  }
+
+  .slide-desc {
+    font-size: .9rem;
+    color: rgba(255,255,255,.82);
+    line-height: 1.65;
+    max-width: 520px;
+  }
+
+  .slide-tag {
+    display: inline-block;
+    margin-top: .6rem;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: .2rem .75rem;
+    font-size: .72rem;
+    color: rgba(255,255,255,.75);
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* nav arrows */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.25);
+    color: white;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background .2s, transform .2s;
+    user-select: none;
+  }
+
+  .carousel-btn:hover {
+    background: rgba(255,255,255,.28);
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  .carousel-btn.prev { left: 1rem; }
+  .carousel-btn.next { right: 1rem; }
+
+  /* dot indicators */
+  .carousel-dots {
+    position: absolute;
+    bottom: 7.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: .4rem;
+    z-index: 10;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.4);
+    cursor: pointer;
+    transition: all .3s;
+  }
+
+  .dot.active {
+    background: white;
+    width: 20px;
+    border-radius: 3px;
+  }
+
+  /* ─── FLUID LIST ─── */
+  .fluid-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: .7rem;
+    margin: 1.2rem 0;
+  }
+
+  .fluid-item {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .75rem 1rem;
+    font-size: .88rem;
+    color: var(--mid);
+    font-weight: 500;
+  }
+
+  /* ─── PREVENTION GRID ─── */
+  .prev-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.4rem 0;
+  }
+
+  .prev-card {
+    background: linear-gradient(135deg, var(--teal-light), #d4edf8);
+    border: 1px solid #b8d9ec;
+    border-radius: 12px;
+    padding: 1.3rem;
+    text-align: center;
+  }
+
+  .prev-icon { font-size: 1.8rem; margin-bottom: .5rem; }
+  .prev-icon i            { font-size: 1.7rem; color: var(--teal); }
+  .cta-icon i             { font-size: 1.9rem; color: var(--accent2); }
+  .stat-icon i            { font-size: 1.35rem; color: var(--teal); }
+  .fluid-item i           { font-size: .9rem; color: var(--teal); margin-right: .45rem; width: 15px; text-align: center; }
+  .slide-emoji i          { font-size: 1.9rem; color: white; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
+  .hero-badge i           { font-size: .78rem; margin-right: .25rem; opacity: .85; }
+  .prev-label {
+    font-weight: 600;
+    color: var(--teal-dark);
+    font-size: .9rem;
+    margin-bottom: .3rem;
+  }
+  .prev-desc {
+    font-size: .8rem;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ─── STAGES TIMELINE ─── */
+  .stages {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin: 1.4rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .stage {
+    padding: 1.4rem 1.6rem;
+    background: white;
+    position: relative;
+    padding-left: 5rem;
+  }
+
+  .stage:not(:last-child) { border-bottom: 1px solid var(--border); }
+
+  .stage-num {
+    position: absolute;
+    left: 1.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  .stage-1 .stage-num { background: var(--accent2); }
+  .stage-2 .stage-num { background: var(--teal); }
+  .stage-3 .stage-num { background: var(--accent); }
+
+  .stage-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: .3rem;
+  }
+
+  .stage-1 .stage-name { color: var(--accent2); }
+  .stage-2 .stage-name { color: var(--teal); }
+  .stage-3 .stage-name { color: var(--accent); }
+
+  .stage-desc {
+    font-size: .88rem;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .stage-bullets {
+    list-style: none;
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+
+  .stage-bullets li {
+    font-size: .85rem;
+    color: var(--mid);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .stage-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+    font-size: .75rem;
+  }
+
+  /* ─── U=U BANNER ─── */
+  .ueu-banner {
+    background: linear-gradient(135deg, var(--dark) 0%, #0a3a57 100%);
+    border-radius: 16px;
+    padding: 2.5rem;
+    color: white;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .ueu-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    letter-spacing: -.01em;
+    margin-bottom: .4rem;
+  }
+
+  .ueu-title span { color: #7dd3f0; font-style: italic; }
+
+  .ueu-sub {
+    font-size: .95rem;
+    color: rgba(255,255,255,.65);
+    margin-bottom: 1.4rem;
+  }
+
+  .ueu-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .ueu-badge {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 8px;
+    padding: .5rem 1.2rem;
+    font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: .03em;
+  }
+
+  /* ─── TESTING CTA ─── */
+  .testing-cta {
+    background: linear-gradient(135deg, #fff8ed, #fef3e2);
+    border: 1px solid #f0d5a0;
+    border-radius: 12px;
+    padding: 1.5rem 1.8rem;
+    margin: 1.4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .cta-icon { font-size: 2rem; }
+
+  .cta-text strong {
+    display: block;
+    color: var(--text);
+    margin-bottom: .2rem;
+    font-size: 1rem;
+  }
+
+  .cta-text p {
+    margin: 0;
+    font-size: .88rem;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ─── TREATMENT INFO ─── */
+  .treatment-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1.4rem 0;
+  }
+
+  .stat-box {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+  }
+
+  .stat-icon { font-size: 1.5rem; margin-bottom: .4rem; }
+
+  .stat-label {
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+    margin-bottom: .2rem;
+  }
+
+  .stat-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--teal);
+  }
+
+  /* ─── PORTFOLIO PAGE ─── */
+  .port-hero {
+    background: linear-gradient(160deg, #0f1f2d 0%, #1a3a56 100%);
+    padding: 4.5rem 2.5rem 3.5rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .port-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0,121,168,.25) 0%, transparent 65%);
+  }
+
+  .port-hero-inner { position: relative; z-index: 1; }
+
+  .port-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin-bottom: .7rem;
+    letter-spacing: -.02em;
+  }
+
+  .port-hero p {
+    color: rgba(255,255,255,.65);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ─── MEMBER CARDS ─── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 3rem 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .member-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 16px rgba(15,31,45,.07);
+    transition: transform .25s, box-shadow .25s;
+  }
+
+  .member-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(15,31,45,.12);
+  }
+
+  .member-banner {
+    height: 80px;
+    position: relative;
+  }
+
+  .member-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 3px solid white;
+    position: absolute;
+    bottom: -36px;
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  }
+
+  .member-body {
+    padding: 2.6rem 1.5rem 1.5rem;
+  }
+
+  .member-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: .1rem;
+  }
+
+  .member-role {
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .9rem;
+  }
+
+  .member-bio {
+    font-size: .88rem;
+    color: var(--mid);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .member-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-tag {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    border-radius: 6px;
+    padding: .2rem .55rem;
+    font-size: .75rem;
+    font-weight: 500;
+  }
+
+  .member-socials {
+    display: flex;
+    gap: .5rem;
+  }
+
+  .social-btn {
+    flex: 1;
+    text-align: center;
+    padding: .45rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: .78rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all .2s;
+    cursor: pointer;
+  }
+
+  .social-btn:hover {
+    background: var(--teal-light);
+    border-color: #b8d9ec;
+    color: var(--teal-dark);
+  }
+
+  /* ─── PROJECT SECTION ─── */
+  .project-section {
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 3rem 2.5rem;
+  }
+
+  .project-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .project-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--text);
+    margin-bottom: .4rem;
+  }
+
+  .project-meta {
+    font-size: .85rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .detail-block {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+  }
+
+  .detail-label {
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--muted);
+    margin-bottom: .4rem;
+  }
+
+  .detail-value {
+    font-size: .92rem;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    padding: 1.8rem;
+    font-size: .8rem;
+    line-height: 1.6;
+  }
+
+  footer span { color: rgba(255,255,255,.8); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; gap: .5rem; }
+    .nav-title { display: none; }
+    .hero { height: 280px; }
+    .keypoints { padding: 1.8rem 1.2rem; }
+    .content-wrap { padding: 2rem 1.2rem; }
+    .team-grid { padding: 2rem 1.2rem; grid-template-columns: 1fr; }
+    .project-section { padding: 2rem 1.2rem; }
+    .stage { padding-left: 4.5rem; }
+    .testing-cta { flex-direction: column; text-align: center; }
+    .nav-links { gap: .1rem; }
+    .nav-links a { padding: .4rem .6rem; font-size: .78rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">HIV</div>
+    <span class="nav-title">Awareness</span>
+  </a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('hiv')" class="active" id="nav-hiv">About HIV</a></li>
+    <li><a onclick="showPage('portfolio')" id="nav-portfolio">Our Team</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════ HIV PAGE ═══════════════════════════ -->
+<div class="page active" id="page-hiv">
+
+  <div class="hero">
+    <canvas id="heroCloud"></canvas>
+    <div class="hero-source">Source: CDC — National Center for HIV, Viral Hepatitis, STD, and Tuberculosis Prevention · Jan 14, 2025</div>
+  </div>
+
+  <div class="keypoints">
+    <div class="keypoints-inner">
+      <div class="kp-label">Key Points</div>
+      <div class="kp-grid">
+        <div class="kp-item"><div class="kp-dot"></div><p>HIV is a virus that attacks the body's immune system.</p></div>
+        <div class="kp-item"><div class="kp-dot"></div><p>The only way to know if you have HIV is to get tested.</p></div>
+        <div class="kp-item"><div class="kp-dot"></div><p>There are many ways to prevent HIV — PrEP, PEP, condoms, and not sharing needles.</p></div>
+        <div class="kp-item"><div class="kp-dot"></div><p>HIV treatment helps people live long, healthy lives and prevents transmission.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+
+    <!-- Overview -->
+    <div class="section-card">
+      <h2 class="section-title">Overview</h2>
+      <p>HIV (human immunodeficiency virus) is a virus that attacks the body's immune system. Without treatment, it can lead to AIDS (acquired immunodeficiency syndrome).</p>
+      <p>There is currently <strong>no effective cure</strong>. Once people get HIV, they have it for life. But proper medical care can control the virus. People with HIV who get on and stay on effective HIV treatment can live long, healthy lives and protect their partners.</p>
+    </div>
+
+    <!-- Symptoms -->
+    <div class="section-card">
+      <h2 class="section-title">Symptoms</h2>
+      <p>Most people have <strong>flu-like symptoms</strong> within 2 to 4 weeks after infection. Symptoms may last for a few days or several weeks.</p>
+
+      <div class="symptom-carousel-wrap">
+        <div class="carousel-track" id="carouselTrack">
+
+          <!-- Slide 1 — Fever -->
+          <div class="carousel-slide active">
+            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80');"></div>
+            <div class="slide-tint" style="background: linear-gradient(160deg, rgba(180,40,30,.45) 0%, rgba(10,26,40,.7) 100%);"></div>
+            <div class="slide-info">
+              <div class="slide-icon-label">
+                <span class="slide-emoji"><i class="fa-solid fa-temperature-high"></i></span>
+                <span class="slide-name">Fever</span>
+              </div>
+              <p class="slide-desc">A sudden high body temperature is often one of the first signs of acute HIV infection, usually appearing within 2–4 weeks of exposure. It is often accompanied by night sweats and chills.</p>
+              <span class="slide-tag">Acute Stage Symptom</span>
+            </div>
+          </div>
+
+          <!-- Slide 2 — Sore Throat -->
+          <div class="carousel-slide">
+            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=900&q=80');"></div>
+            <div class="slide-tint" style="background: linear-gradient(160deg, rgba(0,90,126,.45) 0%, rgba(10,26,40,.72) 100%);"></div>
+            <div class="slide-info">
+              <div class="slide-icon-label">
+                <span class="slide-emoji"><i class="fa-solid fa-head-side-cough"></i></span>
+                <span class="slide-name">Sore Throat</span>
+              </div>
+              <p class="slide-desc">Pain or irritation in the throat is a common early symptom that resembles a typical cold or flu. It may make swallowing uncomfortable and can persist for several days or weeks.</p>
+              <span class="slide-tag">Acute Stage Symptom</span>
+            </div>
+          </div>
+
+          <!-- Slide 3 — Swollen Lymph Nodes -->
+          <div class="carousel-slide">
+            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80');"></div>
+            <div class="slide-tint" style="background: linear-gradient(160deg, rgba(30,80,120,.45) 0%, rgba(10,26,40,.72) 100%);"></div>
+            <div class="slide-info">
+              <div class="slide-icon-label">
+                <span class="slide-emoji"><i class="fa-solid fa-bacterium"></i></span>
+                <span class="slide-name">Swollen Lymph Nodes</span>
+              </div>
+              <p class="slide-desc">The immune system responds to infection by enlarging lymph nodes, particularly in the neck, armpits, and groin. These swellings can be tender to the touch and may last for weeks.</p>
+              <span class="slide-tag">Acute Stage Symptom</span>
+            </div>
+          </div>
+
+          <!-- Slide 4 — Rash -->
+          <div class="carousel-slide">
+            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=900&q=80');"></div>
+            <div class="slide-tint" style="background: linear-gradient(160deg, rgba(160,50,20,.45) 0%, rgba(10,26,40,.72) 100%);"></div>
+            <div class="slide-info">
+              <div class="slide-icon-label">
+                <span class="slide-emoji"><i class="fa-solid fa-hand-dots"></i></span>
+                <span class="slide-name">Rash</span>
+              </div>
+              <p class="slide-desc">A red, flat or slightly raised rash may appear on the trunk, face, or limbs — often described as blotchy or spotty. This skin reaction is the body's inflammatory response to the new infection.</p>
+              <span class="slide-tag">Acute Stage Symptom</span>
+            </div>
+          </div>
+
+          <!-- Slide 5 — Muscle Aches -->
+          <div class="carousel-slide">
+            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80');"></div>
+            <div class="slide-tint" style="background: linear-gradient(160deg, rgba(20,70,100,.45) 0%, rgba(10,26,40,.72) 100%);"></div>
+            <div class="slide-info">
+              <div class="slide-icon-label">
+                <span class="slide-emoji"><i class="fa-solid fa-dumbbell"></i></span>
+                <span class="slide-name">Muscle Aches</span>
+              </div>
+              <p class="slide-desc">Generalised muscle and joint pain — myalgia — makes everyday movement uncomfortable. Similar to body aches felt during the flu, this happens as the immune system mounts its initial response to the virus.</p>
+              <span class="slide-tag">Acute Stage Symptom</span>
+            </div>
+          </div>
+
+          <!-- Slide 6 — Fatigue -->
+          <div class="carousel-slide">
+            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=900&q=80');"></div>
+            <div class="slide-tint" style="background: linear-gradient(160deg, rgba(40,20,80,.5) 0%, rgba(10,26,40,.72) 100%);"></div>
+            <div class="slide-info">
+              <div class="slide-icon-label">
+                <span class="slide-emoji"><i class="fa-solid fa-bed"></i></span>
+                <span class="slide-name">Fatigue</span>
+              </div>
+              <p class="slide-desc">Extreme tiredness and a lack of energy that rest doesn't relieve is one of the most common early symptoms. The body exhausts its resources fighting the virus, leaving a person feeling drained and unable to concentrate.</p>
+              <span class="slide-tag">Acute Stage Symptom</span>
+            </div>
+          </div>
+
+        </div><!-- /track -->
+
+        <!-- Arrows -->
+        <button class="carousel-btn prev" onclick="carouselMove(-1)" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn next" onclick="carouselMove(1)" aria-label="Next">&#8594;</button>
+
+        <!-- Dots -->
+        <div class="carousel-dots" id="carouselDots"></div>
+
+      </div><!-- /carousel-wrap -->
+
+      <p>Having these symptoms alone doesn't mean you have HIV — other illnesses can cause similar symptoms. Some people have <strong>no symptoms at all</strong>. The only way to know if you have HIV is to <strong>get tested</strong>.</p>
+    </div>
+
+    <!-- How it Spreads -->
+    <div class="section-card">
+      <h2 class="section-title">How It Spreads</h2>
+      <p>Most people who get HIV get it through anal or vaginal sex, or sharing needles, syringes, or other drug injection equipment. Only certain body fluids can transmit HIV:</p>
+      <div class="fluid-list">
+        <div class="fluid-item"><i class="fa-solid fa-droplet"></i> Blood</div>
+        <div class="fluid-item"><i class="fa-solid fa-microscope"></i> Semen (cum)</div>
+        <div class="fluid-item"><i class="fa-solid fa-droplet"></i> Pre-seminal fluid</div>
+        <div class="fluid-item"><i class="fa-solid fa-droplet"></i> Rectal fluids</div>
+        <div class="fluid-item"><i class="fa-solid fa-droplet"></i> Vaginal fluids</div>
+        <div class="fluid-item"><i class="fa-solid fa-baby"></i> Breast milk</div>
+      </div>
+      <p>These fluids must come in contact with a mucous membrane or damaged tissue, or be directly injected into the bloodstream for transmission to occur.</p>
+      <p>Factors like a person's <strong>viral load</strong>, other sexually transmitted infections, and alcohol or drug use can increase the chances of transmitting HIV.</p>
+    </div>
+
+    <!-- Prevention -->
+    <div class="section-card">
+      <h2 class="section-title">Prevention</h2>
+      <p>Today, more tools than ever are available to prevent HIV. Prevention strategies include:</p>
+      <div class="prev-grid">
+        <div class="prev-card">
+          <div class="prev-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="prev-label">Condoms</div>
+          <div class="prev-desc">Use condoms the right way every time you have sex.</div>
+        </div>
+        <div class="prev-card">
+          <div class="prev-icon"><i class="fa-solid fa-pills"></i></div>
+          <div class="prev-label">PrEP</div>
+          <div class="prev-desc">Pre-exposure prophylaxis — taken before potential HIV exposure.</div>
+        </div>
+        <div class="prev-card">
+          <div class="prev-icon"><i class="fa-solid fa-kit-medical"></i></div>
+          <div class="prev-label">PEP</div>
+          <div class="prev-desc">Post-exposure prophylaxis — taken after a potential HIV exposure.</div>
+        </div>
+        <div class="prev-card">
+          <div class="prev-icon"><i class="fa-solid fa-ban"></i></div>
+          <div class="prev-label">No Needle Sharing</div>
+          <div class="prev-desc">Never share needles, syringes, or other drug injection equipment.</div>
+        </div>
+      </div>
+      <p>If you have HIV, taking HIV treatment to get and keep an <strong>undetectable viral load</strong> is one of the most powerful ways to protect your partners.</p>
+    </div>
+
+    <!-- Testing -->
+    <div class="section-card">
+      <h2 class="section-title">Testing</h2>
+      <p>The only way to know your HIV status is to get tested. Knowing your status gives you powerful information to keep yourself and others healthy.</p>
+      <div class="testing-cta">
+        <div class="cta-icon"><i class="fa-solid fa-flask"></i></div>
+        <div class="cta-text">
+          <strong>Get tested for HIV</strong>
+          <p>Everyone between the ages of <strong>13 and 64</strong> should get tested at least once. People with certain risk factors should get tested more often. Testing options are quick, free, and painless.</p>
+        </div>
+      </div>
+      <p>If your result is <strong>positive</strong>, you can take medicine to treat HIV and live a long, healthy life while protecting others. If your result is <strong>negative</strong>, you can take actions to prevent HIV.</p>
+    </div>
+
+    <!-- Treatment -->
+    <div class="section-card">
+      <h2 class="section-title">Treatment</h2>
+      <p>HIV treatment (antiretroviral therapy or ART) involves taking medicine as prescribed by a health care provider. You should start treatment as soon as possible after diagnosis.</p>
+      <div class="treatment-stats">
+        <div class="stat-box">
+          <div class="stat-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+          <div class="stat-label">Goal</div>
+          <div class="stat-value">Undetectable viral load</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div class="stat-label">Benefit</div>
+          <div class="stat-value">Long, healthy life</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div class="stat-label">Protection</div>
+          <div class="stat-value">Zero sexual transmission</div>
+        </div>
+      </div>
+      <p>HIV treatment can make the viral load so low that a test can't detect it (undetectable viral load). If you have an undetectable viral load, you will <strong>not transmit HIV to others through sex</strong>.</p>
+    </div>
+
+    <!-- U=U Banner -->
+    <div class="ueu-banner">
+      <div class="ueu-title">Undetectable <span>=</span> Untransmittable</div>
+      <div class="ueu-sub">Getting and keeping an undetectable viral load is the best thing you can do to stay healthy.</div>
+      <div class="ueu-badges">
+        <div class="ueu-badge">U = U</div>
+        <div class="ueu-badge">Virally Suppressed = Protected</div>
+      </div>
+    </div>
+
+    <!-- How it Progresses -->
+    <div class="section-card">
+      <h2 class="section-title">How HIV Progresses</h2>
+      <p>When people with HIV don't get treatment, they typically progress through three stages. HIV treatment can slow or prevent the disease from progressing. With modern treatment, progression to Stage 3 (AIDS) is less common today.</p>
+      <div class="stages">
+        <div class="stage stage-1">
+          <div class="stage-num">1</div>
+          <div class="stage-name">Acute HIV Infection</div>
+          <ul class="stage-bullets">
+            <li>Large amount of HIV in blood — very contagious</li>
+            <li>Many people experience flu-like symptoms</li>
+            <li>Get tested if you suspect exposure</li>
+          </ul>
+        </div>
+        <div class="stage stage-2">
+          <div class="stage-num">2</div>
+          <div class="stage-name">Chronic HIV Infection (Clinical Latency)</div>
+          <ul class="stage-bullets">
+            <li>HIV is still active and reproducing in the body</li>
+            <li>People may have no symptoms but can still transmit HIV</li>
+            <li>May last a decade or longer without treatment</li>
+            <li>People on treatment may never progress beyond this stage</li>
+          </ul>
+        </div>
+        <div class="stage stage-3">
+          <div class="stage-num">3</div>
+          <div class="stage-name">AIDS — Acquired Immunodeficiency Syndrome</div>
+          <ul class="stage-bullets">
+            <li>CD4 cell count drops below 200 cells/mL of blood</li>
+            <li>High viral load — easily transmitted to others</li>
+            <li>Severely damaged immune system</li>
+            <li>Without treatment, survival is typically about 3 years</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content-wrap -->
+
+  <footer>
+    <span>Content Source:</span> National Center for HIV, Viral Hepatitis, STD, and Tuberculosis Prevention; Division of HIV Prevention · CDC.gov
+  </footer>
+
+</div><!-- /page-hiv -->
+
+
+<!-- ═══════════════════════════ PORTFOLIO PAGE ═══════════════════════════ -->
+<div class="page" id="page-portfolio">
+
+  <div class="port-hero">
+    <div class="port-hero-inner">
+      <h1>Meet the Team</h1>
+      <p>The people behind this HIV awareness initiative — passionate about public health, education, and making a difference.</p>
+    </div>
+  </div>
+
+  <div class="team-grid">
+
+    <!-- Member 1 -->
+    <div class="member-card">
+      <div class="member-banner" style="background: linear-gradient(135deg, #0079a8, #005a7e);">
+        <div class="member-avatar" style="background: #005a7e;">AK</div>
+      </div>
+      <div class="member-body">
+        <div class="member-name">Aisha Kamau</div>
+        <div class="member-role">Project Lead & Researcher</div>
+        <div class="member-bio">Aisha spearheaded the research and content strategy for this project, ensuring all information aligns with the latest CDC guidelines. She has 5+ years of experience in public health communications.</div>
+        <div class="member-skills">
+          <span class="skill-tag">Public Health</span>
+          <span class="skill-tag">Research</span>
+          <span class="skill-tag">Content Strategy</span>
+        </div>
+        <div class="member-socials">
+          <span class="social-btn">LinkedIn</span>
+          <span class="social-btn">Twitter</span>
+          <span class="social-btn">Email</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 2 -->
+    <div class="member-card">
+      <div class="member-banner" style="background: linear-gradient(135deg, #e8424c, #c02830);">
+        <div class="member-avatar" style="background: #c02830;">JO</div>
+      </div>
+      <div class="member-body">
+        <div class="member-name">James Omondi</div>
+        <div class="member-role">Web Developer</div>
+        <div class="member-bio">James handled the design and development of this website, translating complex health data into a clean, accessible digital experience. He specializes in health-tech interfaces and responsive design.</div>
+        <div class="member-skills">
+          <span class="skill-tag">HTML/CSS/JS</span>
+          <span class="skill-tag">UI Design</span>
+          <span class="skill-tag">Accessibility</span>
+        </div>
+        <div class="member-socials">
+          <span class="social-btn">LinkedIn</span>
+          <span class="social-btn">GitHub</span>
+          <span class="social-btn">Portfolio</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 3 -->
+    <div class="member-card">
+      <div class="member-banner" style="background: linear-gradient(135deg, #f5a623, #d4840a);">
+        <div class="member-avatar" style="background: #d4840a;">NM</div>
+      </div>
+      <div class="member-body">
+        <div class="member-name">Naledi Mokoena</div>
+        <div class="member-role">Health Educator</div>
+        <div class="member-bio">Naledi ensured the content is medically accurate, culturally sensitive, and accessible to diverse audiences. Her background in community health drives the educational focus of this project.</div>
+        <div class="member-skills">
+          <span class="skill-tag">Health Education</span>
+          <span class="skill-tag">Community Outreach</span>
+          <span class="skill-tag">Medical Writing</span>
+        </div>
+        <div class="member-socials">
+          <span class="social-btn">LinkedIn</span>
+          <span class="social-btn">ResearchGate</span>
+          <span class="social-btn">Email</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 4 -->
+    <div class="member-card">
+      <div class="member-banner" style="background: linear-gradient(135deg, #2d6a4f, #1b4332);">
+        <div class="member-avatar" style="background: #1b4332;">TW</div>
+      </div>
+      <div class="member-body">
+        <div class="member-name">Tobias Waweru</div>
+        <div class="member-role">Graphic Designer</div>
+        <div class="member-bio">Tobias created the visual identity and infographics for this project, making complex medical concepts easy to understand at a glance. He's passionate about design as a tool for social good.</div>
+        <div class="member-skills">
+          <span class="skill-tag">Visual Design</span>
+          <span class="skill-tag">Infographics</span>
+          <span class="skill-tag">Branding</span>
+        </div>
+        <div class="member-socials">
+          <span class="social-btn">Behance</span>
+          <span class="social-btn">Dribbble</span>
+          <span class="social-btn">Instagram</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Project Details -->
+  <div class="project-section">
+    <div class="project-inner">
+      <h2>About This Project</h2>
+      <div class="project-meta">A public health initiative dedicated to HIV awareness, education, and destigmatization.</div>
+      <div class="project-details">
+        <div class="detail-block">
+          <div class="detail-label">Project Name</div>
+          <div class="detail-value">HIV Awareness & Education Website</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Content Source</div>
+          <div class="detail-value">CDC — Division of HIV Prevention, Jan 2025</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Objective</div>
+          <div class="detail-value">Make accurate HIV information accessible to everyone</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Audience</div>
+          <div class="detail-value">General public, ages 13 and above</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Year</div>
+          <div class="detail-value">2025 – 2026</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Focus Areas</div>
+          <div class="detail-value">Prevention · Testing · Treatment · Stigma Reduction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>HIV Awareness & Education</span> · Built with care by a dedicated team of health communicators
+  </footer>
+
+</div><!-- /page-portfolio -->
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ─── HERO WORD CLOUD ─── */
+  (function () {
+    const canvas = document.getElementById('heroCloud');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const words = [
+      { text: 'HIV CARE',                weight: 10, color: '#ffffff',              bold: true  },
+      { text: 'HIV Testing',             weight: 8,  color: '#7dd3f0',              bold: true  },
+      { text: 'HIV Treatment',           weight: 8,  color: '#7dd3f0',              bold: true  },
+      { text: 'HIV PrEP',                weight: 6,  color: '#a8dcf0',              bold: true  },
+      { text: 'Self-Testing',            weight: 6,  color: '#a8dcf0',              bold: false },
+      { text: 'HIV PEP',                 weight: 5,  color: '#a8dcf0',              bold: true  },
+      { text: 'Doxy PEP',                weight: 5,  color: '#a8dcf0',              bold: false },
+      { text: 'Mental Health',           weight: 5,  color: '#a8dcf0',              bold: false },
+      { text: 'Condoms',                 weight: 5,  color: '#a8dcf0',              bold: false },
+      { text: 'Substance Use Treatment', weight: 4,  color: 'rgba(255,255,255,.6)', bold: false },
+      { text: 'Family Planning',         weight: 4,  color: 'rgba(255,255,255,.6)', bold: false },
+      { text: 'Housing Assistance',      weight: 4,  color: 'rgba(255,255,255,.6)', bold: false },
+      { text: 'Health Centers',          weight: 4,  color: 'rgba(255,255,255,.6)', bold: false },
+      { text: 'STI Testing & Treatment', weight: 4,  color: 'rgba(255,255,255,.6)', bold: false },
+    ];
+
+    // Each placed word also gets a gentle float offset
+    let items = [];
+    let animFrame;
+
+    function fontSize(w) { return 14 + w * 4.8; }
+
+    function resize() {
+      canvas.width  = canvas.offsetWidth  * devicePixelRatio;
+      canvas.height = canvas.offsetHeight * devicePixelRatio;
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      buildCloud();
+    }
+
+    function buildCloud() {
+      const W = canvas.offsetWidth;
+      const H = canvas.offsetHeight;
+      const placed = [];
+      items = [];
+
+      // sort heaviest first for best placement
+      const sorted = [...words].sort((a, b) => b.weight - a.weight);
+
+      for (const word of sorted) {
+        const fs   = fontSize(word.weight);
+        const font = `${word.bold ? 700 : 400} ${fs}px "DM Sans", sans-serif`;
+        ctx.font   = font;
+        const tw   = ctx.measureText(word.text).width;
+        const th   = fs * 1.15;
+        const pad  = 10;
+
+        let placed_ok = false;
+        for (let attempt = 0; attempt < 300; attempt++) {
+          const x = pad + Math.random() * Math.max(pad, W - tw - pad * 2);
+          const y = th + pad + Math.random() * Math.max(pad, H - th - pad * 2);
+
+          // collision check
+          let ok = true;
+          for (const p of placed) {
+            if (x < p.x + p.w + pad && x + tw + pad > p.x &&
+                y - th < p.y + p.h + pad && y + pad > p.y) {
+              ok = false; break;
+            }
+          }
+          if (ok) {
+            placed.push({ x, y: y - th, w: tw, h: th });
+            items.push({
+              text: word.text,
+              font,
+              color: word.color,
+              x, y,
+              ox: x, oy: y,               // origin for float
+              phase: Math.random() * Math.PI * 2,
+              amp: 2 + Math.random() * 3,  // float amplitude px
+              speed: 0.4 + Math.random() * 0.5,
+            });
+            placed_ok = true;
+            break;
+          }
+        }
+      }
+    }
+
+    function draw(ts) {
+      const W = canvas.offsetWidth;
+      const H = canvas.offsetHeight;
+      ctx.clearRect(0, 0, W, H);
+
+      const t = ts / 1000;
+      for (const item of items) {
+        const dy = Math.sin(t * item.speed + item.phase) * item.amp;
+        const dx = Math.cos(t * item.speed * 0.7 + item.phase) * item.amp * 0.5;
+        ctx.font      = item.font;
+        ctx.fillStyle = item.color;
+        ctx.fillText(item.text, item.ox + dx, item.oy + dy);
+      }
+
+      animFrame = requestAnimationFrame(draw);
+    }
+
+    function start() {
+      cancelAnimationFrame(animFrame);
+      resize();
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', start);
+    document.fonts.ready.then(start);
+  })();
+  (function () {
+    const track = document.getElementById('carouselTrack');
+    const dotsWrap = document.getElementById('carouselDots');
+    const slides = track ? Array.from(track.children) : [];
+    let current = 0;
+    let autoTimer;
+
+    function buildDots() {
+      slides.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => goTo(i);
+        dotsWrap.appendChild(d);
+      });
+    }
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dotsWrap.children[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      slides[current].classList.add('active');
+      dotsWrap.children[current].classList.add('active');
+    }
+
+    window.carouselMove = function(dir) {
+      clearInterval(autoTimer);
+      goTo(current + dir);
+      startAuto();
+    };
+
+    function startAuto() {
+      autoTimer = setInterval(() => goTo(current + 1), 4500);
+    }
+
+    if (slides.length) {
+      buildDots();
+      startAuto();
+
+      // touch/swipe support
+      let startX = 0;
+      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) { clearInterval(autoTimer); goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      });
+    }
+  })();
+</script>
+</body>
+</html>
