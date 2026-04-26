@@ -244,6 +244,7 @@
     overflow: hidden;
     margin: 1.4rem 0 1rem;
     height: 420px;
+    max-width: 100%;
     box-shadow: 0 8px 32px rgba(15,31,45,.18);
   }
 
@@ -258,6 +259,7 @@
     flex: 0 0 100%;
     position: relative;
     overflow: hidden;
+    width: 100%;
   }
 
   .slide-bg {
@@ -267,6 +269,8 @@
     background-position: center;
     transition: transform 6s ease;
     transform: scale(1.04);
+    width: 100%;
+    height: 100%;
   }
 
   .carousel-slide.active .slide-bg {
@@ -288,6 +292,8 @@
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-top: 1px solid rgba(255,255,255,.12);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .slide-icon-label {
@@ -316,6 +322,7 @@
     color: rgba(255,255,255,.82);
     line-height: 1.65;
     max-width: 520px;
+    width: 100%;
   }
 
   .slide-tag {
@@ -832,6 +839,68 @@
   footer span { color: rgba(255,255,255,.8); }
 
   /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .symptom-carousel-wrap {
+      height: 380px;
+    }
+    .slide-name {
+      font-size: 1.4rem;
+    }
+    .slide-desc {
+      font-size: .85rem;
+      max-width: 450px;
+    }
+    .content-wrap {
+      padding: 2.5rem 2rem;
+    }
+    .section-card {
+      padding: 2rem;
+    }
+    .kp-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .symptom-carousel-wrap {
+      height: 320px;
+      margin: 1rem 0 0.8rem;
+    }
+    .slide-info {
+      padding: 1.2rem 1.5rem 1.4rem;
+    }
+    .slide-icon-label {
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .slide-emoji {
+      font-size: 1.6rem;
+    }
+    .slide-name {
+      font-size: 1.25rem;
+    }
+    .slide-desc {
+      font-size: .8rem;
+      line-height: 1.5;
+      max-width: 100%;
+    }
+    .slide-tag {
+      font-size: .65rem;
+      padding: .15rem .6rem;
+      margin-top: .4rem;
+    }
+    .carousel-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 0.9rem;
+    }
+    .carousel-btn.prev { left: 0.5rem; }
+    .carousel-btn.next { right: 0.5rem; }
+    .carousel-dots {
+      bottom: 6rem;
+    }
+  }
+
   @media (max-width: 640px) {
     nav { padding: 0 1rem; gap: .5rem; }
     .nav-title { display: none; }
@@ -844,6 +913,158 @@
     .testing-cta { flex-direction: column; text-align: center; }
     .nav-links { gap: .1rem; }
     .nav-links a { padding: .4rem .6rem; font-size: .78rem; }
+    
+    /* Additional mobile optimizations */
+    .section-title {
+      font-size: 1.4rem;
+    }
+    .section-card {
+      padding: 1.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .kp-grid {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+    .kp-item p {
+      font-size: .85rem;
+    }
+    .prev-grid {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+    .fluid-list {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .treatment-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+    .stages {
+      margin: 1rem 0;
+    }
+    .stage {
+      padding: 1rem 1.2rem;
+      padding-left: 4rem;
+    }
+    .stage-num {
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
+      left: 1.2rem;
+    }
+    .ueu-banner {
+      padding: 2rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .ueu-title {
+      font-size: 1.6rem;
+    }
+    .ueu-badges {
+      gap: 0.5rem;
+    }
+    .ueu-badge {
+      padding: .4rem 1rem;
+      font-size: .8rem;
+    }
+    
+    /* Enhanced mobile carousel */
+    .symptom-carousel-wrap {
+      height: 280px;
+      margin: 0.8rem 0 0.6rem;
+      border-radius: 12px;
+    }
+    .slide-info {
+      padding: 1rem 1.2rem 1.2rem;
+    }
+    .slide-icon-label {
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+    .slide-emoji {
+      font-size: 1.4rem;
+    }
+    .slide-name {
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+    .slide-desc {
+      font-size: .75rem;
+      line-height: 1.4;
+    }
+    .slide-tag {
+      font-size: .6rem;
+      padding: .12rem .5rem;
+      margin-top: .3rem;
+    }
+    .carousel-btn {
+      width: 32px;
+      height: 32px;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+    .carousel-btn:hover {
+      opacity: 1;
+    }
+    .carousel-btn.prev { left: 0.3rem; }
+    .carousel-btn.next { right: 0.3rem; }
+    .carousel-dots {
+      bottom: 5rem;
+    }
+    .dot {
+      width: 5px;
+      height: 5px;
+    }
+    .dot.active {
+      width: 16px;
+      border-radius: 2.5px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .symptom-carousel-wrap {
+      height: 240px;
+    }
+    .slide-info {
+      padding: 0.8rem 1rem 1rem;
+    }
+    .slide-name {
+      font-size: 1rem;
+    }
+    .slide-desc {
+      font-size: .7rem;
+    }
+    .carousel-btn {
+      width: 28px;
+      height: 28px;
+      font-size: 0.7rem;
+    }
+    .carousel-dots {
+      bottom: 4.5rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .symptom-carousel-wrap {
+      height: 200px;
+    }
+    .slide-info {
+      padding: 0.6rem 0.8rem 0.8rem;
+    }
+    .slide-emoji {
+      font-size: 1.2rem;
+    }
+    .slide-name {
+      font-size: 0.95rem;
+    }
+    .slide-desc {
+      font-size: .65rem;
+    }
+    .slide-tag {
+      font-size: .55rem;
+      padding: .1rem .4rem;
+    }
   }
 </style>
 </head>
@@ -1403,23 +1624,34 @@
     const slides = track ? Array.from(track.children) : [];
     let current = 0;
     let autoTimer;
+    let isTransitioning = false;
 
     function buildDots() {
       slides.forEach((_, i) => {
         const d = document.createElement('div');
         d.className = 'dot' + (i === 0 ? ' active' : '');
         d.onclick = () => goTo(i);
+        d.setAttribute('role', 'button');
+        d.setAttribute('tabindex', '0');
+        d.setAttribute('aria-label', `Go to slide ${i + 1}`);
         dotsWrap.appendChild(d);
       });
     }
 
     function goTo(index) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      
       slides[current].classList.remove('active');
       dotsWrap.children[current].classList.remove('active');
       current = (index + slides.length) % slides.length;
       track.style.transform = `translateX(-${current * 100}%)`;
       slides[current].classList.add('active');
       dotsWrap.children[current].classList.add('active');
+      
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 550);
     }
 
     window.carouselMove = function(dir) {
@@ -1429,20 +1661,120 @@
     };
 
     function startAuto() {
+      clearInterval(autoTimer);
       autoTimer = setInterval(() => goTo(current + 1), 4500);
     }
 
+    // Enhanced touch/swipe support
     if (slides.length) {
       buildDots();
       startAuto();
 
-      // touch/swipe support
       let startX = 0;
-      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      let startY = 0;
+      let isDragging = false;
+      let threshold = 50; // Minimum swipe distance
+
+      // Touch events
+      track.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isDragging = true;
+        clearInterval(autoTimer);
+      }, { passive: true });
+
+      track.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+        const diffX = Math.abs(currentX - startX);
+        const diffY = Math.abs(currentY - startY);
+        
+        // Prevent vertical scroll if horizontal swipe is detected
+        if (diffX > diffY && diffX > 10) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
       track.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - startX;
-        if (Math.abs(dx) > 40) { clearInterval(autoTimer); goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const endX = e.changedTouches[0].clientX;
+        const dx = endX - startX;
+        
+        if (Math.abs(dx) > threshold) {
+          goTo(current + (dx < 0 ? 1 : -1));
+        }
+        startAuto();
+      }, { passive: true });
+
+      // Mouse events for desktop swipe support
+      let mouseDown = false;
+      
+      track.addEventListener('mousedown', e => {
+        mouseDown = true;
+        startX = e.clientX;
+        clearInterval(autoTimer);
+        track.style.cursor = 'grabbing';
+        e.preventDefault();
       });
+
+      track.addEventListener('mousemove', e => {
+        if (!mouseDown) return;
+        e.preventDefault();
+      });
+
+      track.addEventListener('mouseup', e => {
+        if (!mouseDown) return;
+        mouseDown = false;
+        track.style.cursor = 'grab';
+        
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > threshold) {
+          goTo(current + (dx < 0 ? 1 : -1));
+        }
+        startAuto();
+      });
+
+      track.addEventListener('mouseleave', e => {
+        if (mouseDown) {
+          mouseDown = false;
+          track.style.cursor = 'grab';
+          startAuto();
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') {
+          carouselMove(-1);
+        } else if (e.key === 'ArrowRight') {
+          carouselMove(1);
+        }
+      });
+
+      // Pause on hover for desktop
+      track.addEventListener('mouseenter', () => {
+        clearInterval(autoTimer);
+      });
+
+      track.addEventListener('mouseleave', () => {
+        startAuto();
+      });
+
+      // Visibility API - pause when tab is not visible
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearInterval(autoTimer);
+        } else {
+          startAuto();
+        }
+      });
+
+      // Set initial cursor style
+      track.style.cursor = 'grab';
     }
   })();
 </script>
